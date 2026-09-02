@@ -22,7 +22,7 @@
       environment.sessionVariables = {
         EDITOR = "vim";
         VISUAL = "vim";
-      }
+      };
     };
   };
 }
