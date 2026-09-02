@@ -20,11 +20,9 @@
     hostName = "atlas";
   };
 
-  services.getty.autologinUser = "fish";
-
-  environment.loginShellInit = ''
-    [ "$(tty)" = /dev/tty1 ] && exec mango
-  '';
+  # environment.loginShellInit = ''
+  #   [ "$(tty)" = /dev/tty1 ] && exec mango
+  # '';
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
