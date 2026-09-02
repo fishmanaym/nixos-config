@@ -1,3 +1,7 @@
 {
-  imports = [ ./blocklist.nix ./networkmanager.nix ];
+  imports = [ 
+   ./blocklist.nix 
+  #  ./networkmanager.nix 
+];
+networking.networkmanager.enable = true;
 }

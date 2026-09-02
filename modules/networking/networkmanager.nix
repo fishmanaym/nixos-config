@@ -11,12 +11,12 @@ _:
       ];
 
       wifi = {
-        macAddress = "random";
+    #    macAddress = "random";
         powersave = true;
         scanRandMacAddress = true;
       };
 
-      ethernet.macAddress = "random";
+    #  ethernet.macAddress = "random"; # TODO: add later, needed to remove for vm
     };
     enableIPv6 = true;
   };
