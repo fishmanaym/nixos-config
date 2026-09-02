@@ -13,12 +13,12 @@
     # zswap.enable = true;
 
     tmp = rec {
-      tmpfs = true; 
-      cleanOnBoot = !tmpfs;
+      useTmpfs = true; 
+      cleanOnBoot = !useTmpfs;
     };
   };
   
   # if tmpfs make nixos use /var/tmp to prevent running out of space
-  systemd.services.nix-daemon = 
-    if config.boot.tmp.tmpfs then { environment.TMPDIR = "/var/tmp"; } else { };
+#  systemd.services.nix-daemon = 
+#    if config.boot.tmp.useTmpfs then { environment.TMPDIR = "/var/tmp"; } else { };
 }

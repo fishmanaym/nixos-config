@@ -1,7 +1,7 @@
 {
   imports  = [
     ./networking
-    ./users
+    ./users/fish
 
     ./audio.nix
     # ./bluetooth.nix

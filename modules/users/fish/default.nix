@@ -14,7 +14,7 @@
 
   hjem.users = {
     fish = {
-      directory = /home/fish;
+      directory = "/home/fish";
       files = {
         ".config/waybar".source = ./.config/waybar;
         ".config/mango".source = ./.config/mango;

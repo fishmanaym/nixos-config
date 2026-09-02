@@ -10,7 +10,7 @@ _:
     es = "es_ES.UTF-8";
   in {
     defaultLocale = us;
-    extraLocales = [ es ];
+    extraLocales = [ "${es}/UTF-8" ]; # requires es_ES.UTF-8/UTF-8 format
 
     extraLocaleSettings = {
       LC_ADDRESS = es;
