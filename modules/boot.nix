@@ -6,6 +6,7 @@
       grub = { 
         enable = true;
         device = "/dev/sda";  # probably needs to change it when installing or smth, works on vm
+        fsIdentifier = "provided"; # use provided UUIDs instead of blkid probing (required for btrfs subvolumes)
       };
     };
 

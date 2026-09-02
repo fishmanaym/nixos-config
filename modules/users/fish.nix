@@ -8,6 +8,7 @@
       isNormalUser = true;
       description = "Fishmanaym";
       extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [];
     };
   };
 
