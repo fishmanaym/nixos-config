@@ -24,11 +24,11 @@
     #nixosModules = import ./modules/nixos;
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#gensokyo'
+    # Available through 'nixos-rebuild --flake .#atlas'
     nixosConfigurations = {
       # hostname = ...
-      gensokyo = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs; hostname = "gensokyo"};
+      atlas = nixpkgs.lib.nixosSystem {
+        # specialArgs = {inherit inputs;};
         modules = [
           inputs.hjem.nixosModules.default
           inputs.mangowm.nixosModules.mango

@@ -1,4 +1,4 @@
-_:
+{ config, ... }:
 
 {
   boot = {  
@@ -11,9 +11,13 @@ _:
 
     # zswap.enable = true;
 
-    tmp = {
-      # tmpfs = true; # test before enabling, low on ram can be problematic for compiling
-      boot.tmp.cleanOnBoot = true; # disable when tmpfs = true;
-    }
+    tmp = rec {
+      tmpfs = true; 
+      cleanOnBoot = !tmpfs;
+    };
   };
+  
+  # if tmpfs make nixos use /var/tmp to prevent running out of space
+  systemd.services.nix-daemon = 
+    if config.boot.tmp.tmpfs then { environment.TMPDIR = "/var/tmp"; } else { };
 }
