@@ -10,5 +10,6 @@
     ./nix.nix
     ./power-management.nix
     # ./printing.nix
+    ./programs
   ];
 }
