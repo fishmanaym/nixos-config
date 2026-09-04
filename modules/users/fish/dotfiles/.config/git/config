@@ -1,0 +1,7 @@
+[user]
+        name = fishmanaym
+        email = 69584761+fishmanaym@users.noreply.github.com
+[core]
+        editor = vim
+[diff]
+        tool = vimdiff

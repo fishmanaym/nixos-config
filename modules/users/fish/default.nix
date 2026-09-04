@@ -1,28 +1,26 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # users.mutableUsers = false;
 
-  users.users = {
-    fish = {
-      isNormalUser = true;
-      description = "Fishmanaym";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [];
-    };
+  users.users.fish = {
+    isNormalUser = true;
+    description = "Fishmanaym";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
+    shell = lib.mkIf config.programs.zsh.enable config.programs.zsh.package;
   };
 
-  hjem.users = {
-    fish = {
-      directory = "/home/fish";
-      files = {
-        ".config/waybar".source = ./.config/waybar;
-        ".config/mango".source = ./.config/mango;
-      };
-      environment.sessionVariables = {
-        EDITOR = "vim";
-        VISUAL = "vim";
-      };
+  hjem.users.fish = {
+    directory = "/home/fish";
+    files = {
+      ".config/git".source = ./dotfiles/.config/git;
+      ".config/waybar".source = ./dotfiles/.config/waybar;
+      ".config/mango".source = ./dotfiles/.config/mango;
+    };
+    environment.sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "zed";
     };
   };
 }

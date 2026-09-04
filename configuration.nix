@@ -13,7 +13,7 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
     };
 
@@ -31,25 +31,44 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     brightnessctl
+    fuzzel # tofi?
+    wl-clipboard
+    grim
+    slurp
     keepassxc
-    mako
+    mako     # tiramisu ?
+    swayidle
+    swaylock
+    libqalculate
+    prismlauncher
+    ungoogled-chromium
+    wbg
     wget
+    zed-editor
+    yazi # lf / lfcd / fff
+    # wine
   ];
 
+# programs.noisetorch.enable = true; ?? if i ever need noise supression maybe
   programs.mango.enable = true;
   programs.vim.enable = true;
+  programs.neovim.enable = true;
   programs.foot.enable = true;
   programs.git.enable = true;
   programs.firefox.enable = true;
   programs.waybar.enable = true;
+  programs.obs-studio.enable = true;
+  programs.steam.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = 1;
     MOZ_ENABLE_WAYLAND = 1;
   };
 
+  security.polkit.enable = true;
+
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   system.stateVersion = "26.05"; # do not change 
 }
