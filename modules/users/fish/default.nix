@@ -8,7 +8,6 @@
     description = "Fishmanaym";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-    shell = lib.mkIf config.programs.zsh.enable config.programs.zsh.package;
   };
 
   hjem.users.fish = {
