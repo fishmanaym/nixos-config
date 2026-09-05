@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{config, lib, pkgs, ...}:
 
 let
   shellAliases = {
@@ -13,12 +13,17 @@ let
       exec mango
     fi
   '';
+
+  cfg = config.programs;
 in {
   programs.bash = {
     enable = true;
     inherit shellAliases loginShellInit;
-    histFile = "$XDG_CACHE_HOME/bash/history";
   };
+  
+  # move bash history to .cache to keep home clean
+  environment.sessionVariables.HISTFILE = lib.mkIf cfg.bash.enable "$XDG_CACHE_HOME/bash/history";
+  system.userActivationScripts.bashHistoryFoldersCreate = lib.mkIf cfg.bash.enable "mkdir -p $XDG_CACHE_HOME/bash";
 
   programs.zsh = {
     enable = false;
@@ -26,4 +31,5 @@ in {
     syntaxHighlighting.enable = true;
     histFile = "$XDG_CACHE_HOME/zsh/history";
   };
+  environment.shells = lib.mkIf cfg.zsh.enable [ cfg.zsh.package ];
 }
