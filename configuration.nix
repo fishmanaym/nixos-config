@@ -47,7 +47,12 @@
     zed-editor
     yazi # lf / lfcd / fff
     # wine
+    adwaita-icon-theme
   ];
+
+ fonts.packages = with pkgs; [
+   font-awesome
+ ]; 
 
  environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
