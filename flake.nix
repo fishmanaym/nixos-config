@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     mangowm = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +20,6 @@
     nixpkgs,
     ...
   } @ inputs: {
-
     #nixosModules = import ./modules/nixos;
 
     # NixOS configuration entrypoint

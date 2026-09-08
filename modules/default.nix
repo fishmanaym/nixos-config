@@ -1,5 +1,5 @@
 {
-  imports  = [
+  imports = [
     ./networking
     ./users/fish
 

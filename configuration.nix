@@ -1,20 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules
-    ];
+{pkgs, ...}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules
+  ];
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [];
+      allowedUDPPorts = [];
     };
 
     hostName = "atlas";
@@ -36,7 +33,7 @@
     grim
     slurp
     keepassxc
-    mako     # tiramisu ?
+    mako # tiramisu ?
     fluffychat
     wlsunset
     nixd
@@ -54,18 +51,18 @@
     adwaita-icon-theme
   ];
 
- fonts.packages = with pkgs; [
-   font-awesome
- ];
+  fonts.packages = with pkgs; [
+    font-awesome
+  ];
 
- environment.sessionVariables = {
+  environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
- };
+  };
 
-# programs.noisetorch.enable = true; ?? if i ever need noise supression maybe
+  # programs.noisetorch.enable = true; ?? if i ever need noise supression maybe
   programs.mango.enable = true;
   programs.vim.enable = true;
   programs.neovim.enable = true;

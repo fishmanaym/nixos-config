@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   networking = {
     networkmanager = {
       enable = true;
@@ -11,12 +9,12 @@ _:
       ];
 
       wifi = {
-    #    macAddress = "random";
+        #    macAddress = "random";
         powersave = true;
         scanRandMacAddress = true;
       };
 
-    #  ethernet.macAddress = "random"; # TODO: add later, needed to remove for vm
+      #  ethernet.macAddress = "random"; # TODO: add later, needed to remove for vm
     };
     enableIPv6 = true;
   };

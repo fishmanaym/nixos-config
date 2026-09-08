@@ -1,15 +1,15 @@
-{ hostname, ... }: # /etc/hosts
-
+{hostname, ...}:
+# /etc/hosts
 {
   networking.stevenblack = {
     enable = true;
-    block = [ 
+    block = [
       # "fakenews"
       # "gambling"
       # "porn"
       # "social"
     ];
-    whitelist = [ 
+    whitelist = [
       # example.com
     ];
   };

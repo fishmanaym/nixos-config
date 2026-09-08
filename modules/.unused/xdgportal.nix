@@ -1,9 +1,9 @@
-{ pkgs, ... }: # everything here is done by mango anyways
-
+{pkgs, ...}:
+# everything here is done by mango anyways
 {
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     wlr.enable = true;
   };
 }

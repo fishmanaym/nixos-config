@@ -1,16 +1,16 @@
-_: # i was going to make it this way but regreted
-
+_:
+# i was going to make it this way but regreted
 {
-  networking = {    
+  networking = {
     wireless = {
       enable = true;
       userControlled = true;
 
-      iwd = { 
+      iwd = {
         enable = false;
         settings = {
           Settings.AutoConnect = true;
-          
+
           General = {
             AddressRandomization = "network";
             AddressRandomizationRange = "full";

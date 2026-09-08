@@ -1,6 +1,8 @@
-{config, lib, ...}:
-
-let
+{
+  config,
+  lib,
+  ...
+}: let
   shellAliases = {
     wifi = "nmcli device wifi";
     # suspend = "systemctl suspend";
@@ -31,5 +33,5 @@ in {
     syntaxHighlighting.enable = true;
     histFile = "$XDG_CACHE_HOME/zsh/history";
   };
-  environment.shells = lib.mkIf cfg.zsh.enable [ cfg.zsh.package ];
+  environment.shells = lib.mkIf cfg.zsh.enable [cfg.zsh.package];
 }

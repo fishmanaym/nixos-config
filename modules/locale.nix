@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
@@ -10,7 +8,7 @@ _:
     es = "es_ES.UTF-8";
   in {
     defaultLocale = us;
-    extraLocales = [ "${es}/UTF-8" ]; # requires es_ES.UTF-8/UTF-8 format
+    extraLocales = ["${es}/UTF-8"]; # requires es_ES.UTF-8/UTF-8 format
 
     extraLocaleSettings = {
       LC_ADDRESS = es;
@@ -33,5 +31,4 @@ _:
 
   # Configure console keymap
   console.keyMap = "es";
-
 }
