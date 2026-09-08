@@ -11,5 +11,6 @@
     ./power-management.nix
     # ./printing.nix
     ./programs
+    ./uwsm.nix
   ];
 }

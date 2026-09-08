@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -23,7 +23,7 @@
   # environment.loginShellInit = ''
   #   [ "$(tty)" = /dev/tty1 ] && exec mango
   # '';
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -37,6 +37,10 @@
     slurp
     keepassxc
     mako     # tiramisu ?
+    fluffychat
+    wlsunset
+    nixd
+    alejandra
     swayidle
     swaylock
     libqalculate
@@ -52,7 +56,7 @@
 
  fonts.packages = with pkgs; [
    font-awesome
- ]; 
+ ];
 
  environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
@@ -82,5 +86,5 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
-  system.stateVersion = "26.05"; # do not change 
+  system.stateVersion = "26.05"; # do not change
 }

@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}:
+{config, lib, ...}:
 
 let
   shellAliases = {
@@ -9,8 +9,8 @@ let
 
   # login to mango on tty1
   loginShellInit = ''
-    if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec mango
+    if uwsm check may-start; then
+        exec uwsm start default
     fi
   '';
 
@@ -20,7 +20,7 @@ in {
     enable = true;
     inherit shellAliases loginShellInit;
   };
-  
+
   # move bash history to .cache to keep home clean
   environment.sessionVariables.HISTFILE = lib.mkIf cfg.bash.enable "$XDG_CACHE_HOME/bash/history";
   system.userActivationScripts.bashHistoryFoldersCreate = lib.mkIf cfg.bash.enable "mkdir -p $XDG_CACHE_HOME/bash";

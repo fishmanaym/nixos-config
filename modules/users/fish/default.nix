@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # users.mutableUsers = false;
@@ -16,6 +16,7 @@
       ".config/git".source = ./dotfiles/.config/git;
       ".config/waybar".source = ./dotfiles/.config/waybar;
       ".config/mango".source = ./dotfiles/.config/mango;
+      ".config/uwsm".source = ./dotfiles/.config/uwsm;
     };
     environment.sessionVariables = {
       EDITOR = "vim";
