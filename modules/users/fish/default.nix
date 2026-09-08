@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  myLib,
+  ...
+}: {
   # users.mutableUsers = false;
 
   users.users.fish = {
@@ -10,12 +14,7 @@
 
   hjem.users.fish = {
     directory = "/home/fish";
-    files = {
-      ".config/git".source = ./dotfiles/.config/git;
-      ".config/waybar".source = ./dotfiles/.config/waybar;
-      ".config/mango".source = ./dotfiles/.config/mango;
-      ".config/uwsm".source = ./dotfiles/.config/uwsm;
-    };
+    files = myLib.getHjemFiles ./dotfiles;
     environment.sessionVariables = {
       EDITOR = "vim";
       VISUAL = "zed";

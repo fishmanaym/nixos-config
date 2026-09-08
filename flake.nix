@@ -27,7 +27,7 @@
     nixosConfigurations = {
       # hostname = ...
       atlas = nixpkgs.lib.nixosSystem {
-        # specialArgs = {inherit inputs;};
+        specialArgs = {myLib = import ./myLib {lib = nixpkgs.lib;};};
         modules = [
           inputs.hjem.nixosModules.default
           inputs.mangowm.nixosModules.mango
