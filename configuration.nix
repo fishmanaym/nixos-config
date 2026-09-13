@@ -49,6 +49,7 @@
     yazi # lf / lfcd / fff
     # wine
     adwaita-icon-theme
+    python3
   ];
 
   fonts.packages = with pkgs; [
