@@ -1,20 +1,24 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: {
   networking = {
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dns = lib.mkIf config.services.resolved.enable "systemd-resolved";
       unmanaged = [
         "interface-name:docker*"
         "type:bridge"
       ];
 
       wifi = {
-        #    macAddress = "random";
+        macAddress = "random";
         powersave = true;
         scanRandMacAddress = true;
       };
 
-      #  ethernet.macAddress = "random"; # TODO: add later, needed to remove for vm
+      ethernet.macAddress = "random";
     };
     enableIPv6 = true;
   };
