@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -38,7 +38,7 @@
     wlsunset
     nixd
     alejandra
-    swayidle
+    # swayidle
     swaylock
     libqalculate
     prismlauncher
@@ -56,6 +56,8 @@
     font-awesome
   ];
 
+  security.pam.services.swaylock = { }; # needed or else will not get password
+
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -63,8 +65,30 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
+  services.hypridle.enable = true;
+  systemd.user.services.hypridle.path = [
+    pkgs.swaylock
+    pkgs.brightnessctl
+    config.programs.mango.package
+  ];
+
   # programs.noisetorch.enable = true; ?? if i ever need noise supression maybe
-  programs.mango.enable = true;
+  programs.mango = {
+    enable = true;
+    addLoginEntry = false;
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr = {
+      enable = true;
+      settings.screencast = {
+        chooser_type = "simple";
+        chooser_cmd = "''${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+      };
+    };
+  };
+
   programs.vim.enable = true;
   programs.neovim.enable = true;
   programs.foot.enable = true;
