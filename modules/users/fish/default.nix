@@ -8,7 +8,7 @@
   users.users.fish = {
     isNormalUser = true;
     description = "Fishmanaym";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "kvm"];
     packages = with pkgs; [];
   };
 

@@ -12,7 +12,7 @@
   services.resolved = {
     enable = true;
     settings.Resolve = {
-      DNSOverTLS = true;
+      DNSOverTLS = "opportunistic"; # can't be true or eduroam blocks dns if so
       Domains = "~.";
     };
   };

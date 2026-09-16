@@ -21,10 +21,6 @@
     hostName = "atlas";
   };
 
-  # environment.loginShellInit = ''
-  #   [ "$(tty)" = /dev/tty1 ] && exec mango
-  # '';
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -42,7 +38,6 @@
     wlsunset
     nixd
     alejandra
-    # swayidle
     swaylock
     libqalculate
     prismlauncher
@@ -54,7 +49,10 @@
     # wine
     adwaita-icon-theme
     python3
+
+    android-studio
   ];
+  nixpkgs.config.android_sdk.accept_license = true;
 
   fonts.packages = with pkgs; [
     font-awesome
@@ -101,6 +99,10 @@
   programs.waybar.enable = true;
   programs.obs-studio.enable = true;
   programs.steam.enable = true;
+
+  systemd.user.services.waybar.path = [
+    pkgs.brightnessctl
+  ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = 1;
