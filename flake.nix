@@ -13,6 +13,11 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -31,6 +36,7 @@
         modules = [
           inputs.hjem.nixosModules.default
           inputs.mangowm.nixosModules.mango
+          inputs.xremap.nixosModules.default
           ./configuration.nix
         ];
       };

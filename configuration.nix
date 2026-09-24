@@ -49,6 +49,15 @@
     # wine
     adwaita-icon-theme
     python3
+    zip
+    unzip
+    devenv
+    jetbrains.idea
+
+    jdk
+    maven
+    ghc
+    haskell-language-server
 
     android-studio
   ];

@@ -12,5 +12,6 @@
     # ./printing.nix
     ./programs
     ./uwsm.nix
+    ./xremap.nix
   ];
 }

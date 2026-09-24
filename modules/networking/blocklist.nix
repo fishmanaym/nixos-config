@@ -9,7 +9,7 @@
       # "social"
     ];
     whitelist = [
-      # example.com
+      "donmai.us"
     ];
   };
 }
