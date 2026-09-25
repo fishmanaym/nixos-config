@@ -54,7 +54,7 @@
     devenv
     jetbrains.idea
 
-    jdk
+    jdk25
     maven
     ghc
     haskell-language-server
