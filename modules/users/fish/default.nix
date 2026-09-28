@@ -17,7 +17,7 @@
     files = myLib.getHjemFiles ./dotfiles;
     environment.sessionVariables = {
       EDITOR = "vim";
-      VISUAL = "zed";
+      VISUAL = "zeditor";
     };
   };
 }
