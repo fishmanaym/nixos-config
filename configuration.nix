@@ -107,7 +107,14 @@
   programs.firefox.enable = true;
   programs.waybar.enable = true;
   programs.obs-studio.enable = true;
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraPackages = with pkgs; [
+      adwaita-icon-theme
+    ];
+  };
+
+  hjem.users.fish.files.".icons/default".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
 
   systemd.user.services.waybar.path = [
     pkgs.brightnessctl
