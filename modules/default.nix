@@ -4,7 +4,7 @@
     ./users/fish
 
     ./audio.nix
-    # ./bluetooth.nix
+    ./bluetooth.nix
     ./boot.nix
     ./locale.nix
     ./nix.nix
