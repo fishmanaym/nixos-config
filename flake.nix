@@ -18,6 +18,13 @@
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    creamlinux-installer = {
+      type = "github";
+      owner = "Novattz";
+      repo = "creamlinux-installer";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -32,7 +39,10 @@
     nixosConfigurations = {
       # hostname = ...
       atlas = nixpkgs.lib.nixosSystem {
-        specialArgs = {myLib = import ./myLib {lib = nixpkgs.lib;};};
+        specialArgs = {
+          myLib = import ./myLib {lib = nixpkgs.lib;};
+          inherit inputs;
+        };
         modules = [
           inputs.hjem.nixosModules.default
           inputs.mangowm.nixosModules.mango

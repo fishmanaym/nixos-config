@@ -4,6 +4,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
   imports = [
@@ -27,6 +28,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    (import inputs.creamlinux-installer {inherit pkgs;})
     brightnessctl
     fuzzel # tofi?
     wl-clipboard
