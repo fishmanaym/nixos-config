@@ -8,8 +8,8 @@
       keymap = [
         {
           remap = {
-            "kpminus" = "Shift-102ND";
-            "kpasterisk" = "102ND";
+            "kpasterisk" = "Shift-102ND";
+            "kpslash" = "102ND";
           };
         }
       ];
