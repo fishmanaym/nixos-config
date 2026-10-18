@@ -127,6 +127,8 @@
     MOZ_ENABLE_WAYLAND = 1;
   };
 
+  programs.nix-index-database.comma.enable = true;
+
   security.polkit.enable = true;
 
   # Enable the OpenSSH daemon.

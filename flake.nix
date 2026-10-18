@@ -25,6 +25,11 @@
       repo = "creamlinux-installer";
       flake = false;
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -47,6 +52,7 @@
           inputs.hjem.nixosModules.default
           inputs.mangowm.nixosModules.mango
           inputs.xremap.nixosModules.default
+          inputs.nix-index-database.nixosModules.default
           ./configuration.nix
         ];
       };
