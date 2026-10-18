@@ -129,6 +129,11 @@
 
   security.polkit.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
