@@ -13,5 +13,7 @@
     ./programs
     ./uwsm.nix
     ./xremap.nix
+
+    ./graphics.nix
   ];
 }
