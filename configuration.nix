@@ -148,5 +148,12 @@
 
   services.tailscale.enable = true;
 
+  fileSystems = {
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
+    # "/swap".options = ["noatime"];
+  };
+
   system.stateVersion = "26.05"; # do not change
 }
