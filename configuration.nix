@@ -5,6 +5,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -60,6 +61,7 @@
     maven
     ghc
     haskell-language-server
+    nodejs
 
     android-studio
   ];
@@ -78,11 +80,18 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
+  nix.settings.substituters = ["https://nix-community.cachix.org"];
+  nix.settings.trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
+
   services.hypridle.enable = true;
-  systemd.user.services.hypridle.path = [
+  # force needed so it doesn't install hyprland
+  systemd.user.services.hypridle.path = lib.mkForce [
     pkgs.swaylock
     pkgs.brightnessctl
     config.programs.mango.package
+    pkgs.procps
   ];
 
   # programs.noisetorch.enable = true; ?? if i ever need noise supression maybe
