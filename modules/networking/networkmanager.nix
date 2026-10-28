@@ -22,4 +22,6 @@
     };
     enableIPv6 = true;
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
