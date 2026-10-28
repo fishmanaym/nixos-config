@@ -1,7 +1,9 @@
 {
   imports = [
+    users/fish
+    programs/shells.nix
+
     ./networking
-    ./users/fish
 
     ./audio.nix
     ./bluetooth.nix
@@ -9,11 +11,9 @@
     ./locale.nix
     ./nix.nix
     ./power-management.nix
-    # ./printing.nix
-    ./programs
+    ./printing.nix
     ./uwsm.nix
     ./xremap.nix
-
     ./graphics.nix
   ];
 }

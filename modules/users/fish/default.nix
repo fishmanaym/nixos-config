@@ -14,7 +14,7 @@
 
   hjem.users.fish = {
     directory = "/home/fish";
-    files = myLib.getHjemFiles ./dotfiles;
+    files = (myLib.getHjemFiles ./dotfiles) // {".icons/default".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";};
     environment.sessionVariables = {
       EDITOR = "vim";
       VISUAL = "zeditor";

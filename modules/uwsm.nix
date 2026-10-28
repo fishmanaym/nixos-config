@@ -1,4 +1,6 @@
 {
+  imports = [programs/mango.nix];
+
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
