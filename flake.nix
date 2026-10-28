@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/x86_64-linux";
 
     mangowm = {
       url = "github:mangowm/mango";
@@ -25,31 +26,19 @@
       repo = "creamlinux-installer";
       flake = false;
     };
-  };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: {
-    #nixosModules = import ./modules/nixos;
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#atlas'
-    nixosConfigurations = {
-      # hostname = ...
-      atlas = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          myLib = import ./myLib {lib = nixpkgs.lib;};
-          inherit inputs;
-        };
-        modules = [
-          inputs.hjem.nixosModules.default
-          inputs.mangowm.nixosModules.mango
-          inputs.xremap.nixosModules.default
-          ./configuration.nix
-        ];
-      };
+    import-tree = {
+      url = "github:vic/import-tree";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree ./modules);
 }
