@@ -27,15 +27,9 @@
       flake = false;
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
-    import-tree = {
-      url = "github:vic/import-tree";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = inputs:
