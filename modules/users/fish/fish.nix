@@ -21,7 +21,7 @@
     users.users.fish = {
       isNormalUser = true;
       description = "Fishmanaym";
-      extraGroups = ["networkmanager" "wheel" "kvm"];
+      extraGroups = ["video" "networkmanager" "wheel" "kvm"];
       packages = with pkgs; [];
     };
 

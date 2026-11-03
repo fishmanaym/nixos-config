@@ -51,7 +51,7 @@
         }
     },
     "custom/backlight": {
-        "exec": "/home/fish/.config/waybar/scripts/getbrightness.sh",
+        "exec": "getbrightness.sh",
         "interval": "once",
         "signal": 1,
         "return-type": "json",

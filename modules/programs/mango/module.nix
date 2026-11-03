@@ -1,19 +1,24 @@
 {
   self,
   inputs,
+  moduleWithSystem,
   ...
 }: {
-  flake.nixosModules.mango = {pkgs, ...}: {
+  flake.nixosModules.mango = moduleWithSystem ({
+    pkgs,
+    self',
+    ...
+  }: {
     imports = with self.nixosModules; [
       hypridle
-      swaylock
       waybar
-      inputs.mangowm.nixosModules.mango
+      inputs.mango.nixosModules.mango
     ];
 
     programs.mango = {
       enable = true;
       addLoginEntry = false;
+      package = self'.packages.mango;
     };
 
     xdg.portal = {
@@ -26,5 +31,5 @@
         };
       };
     };
-  };
+  });
 }

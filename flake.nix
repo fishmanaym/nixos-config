@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/x86_64-linux";
 
-    mangowm = {
+    mango = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -30,6 +30,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     import-tree.url = "github:vic/import-tree";
+
+    wrappers.url = "github:nix-community/nix-wrapper-modules";
   };
 
   outputs = inputs:

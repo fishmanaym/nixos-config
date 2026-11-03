@@ -33,21 +33,16 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
       (import inputs.creamlinux-installer {inherit pkgs;})
-      brightnessctl
+      # brightnessctl
       fuzzel # tofi?
-      wl-clipboard
-      grim
-      slurp
       keepassxc
       mako # tiramisu ?
       fluffychat
-      wlsunset
       nixd
       alejandra
       libqalculate
       prismlauncher
       ungoogled-chromium
-      wbg
       wget
       zed-editor
       yazi # lf / lfcd / fff
