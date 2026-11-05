@@ -20,13 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    creamlinux-installer = {
-      type = "github";
-      owner = "Novattz";
-      repo = "creamlinux-installer";
-      flake = false;
-    };
-
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     import-tree.url = "github:vic/import-tree";
