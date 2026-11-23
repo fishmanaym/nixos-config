@@ -53,6 +53,7 @@
       devenv
       jetbrains.idea
       antigravity-hub
+      mpv
 
       jdk25
       maven
