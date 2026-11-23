@@ -11,42 +11,39 @@
         fontDirectories = [font];
       };
 
+    defaultDeps = {
+      inherit
+        (pkgs)
+        brightnessctl
+        wireplumber
+        ;
+      inherit getBrightnessSh;
+    };
+
     wrapPackage = {
       pkgs,
       package,
-      deps,
+      deps ? {},
+      env,
+      flags,
     }:
       inputs.wrappers.lib.wrapPackage {
-        inherit pkgs package;
-        flags = {
-          "-c" = ./config/config.jsonc;
-          "-s" = ./config/style.css;
-        };
+        inherit pkgs package env flags;
 
-        runtimePkgs = [
-          deps.brightnessctl
-          deps.wireplumber
-          deps.font-awesome
-          getBrightnessSh
-        ];
+        runtimePkgs = builtins.attrValues (defaultDeps // deps);
 
         filesToPatch = [
           "share/systemd/user/waybar.service"
         ];
-
-        # env = "${(fontsConf )}";
       };
   in {
     packages.waybar = lib.makeOverridable wrapPackage {
       inherit pkgs;
       package = pkgs.waybar;
-      deps = {
-        inherit
-          (pkgs)
-          brightnessctl
-          wireplumber
-          font-awesome
-          ;
+      env."FONTCONFIG_FILE" = "${fontsConf pkgs.font-awesome}";
+      flags = {
+        "-c" = ./config/config.jsonc;
+        "-s" = ./config/style.css;
       };
     };
   };

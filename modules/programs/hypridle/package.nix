@@ -5,23 +5,20 @@
     self',
     ...
   }: let
+    defaultDeps = {
+      inherit (pkgs) swaylock brightnessctl procps;
+      mango = self'.packages.mango;
+    };
     wrapPackage = {
       pkgs,
       package,
-      deps,
+      deps ? {},
+      flags,
     }:
       inputs.wrappers.lib.wrapPackage {
-        inherit pkgs package;
-        flags = {
-          "-c" = ./config/hypridle.conf;
-        };
+        inherit pkgs package flags;
 
-        runtimePkgs = [
-          deps.swaylock
-          deps.brightnessctl
-          deps.procps
-          deps.mango
-        ];
+        runtimePkgs = builtins.attrValues (defaultDeps // deps);
 
         filesToPatch = [
           "share/systemd/user/hypridle.service"
@@ -31,9 +28,8 @@
     packages.hypridle = lib.makeOverridable wrapPackage {
       inherit pkgs;
       package = pkgs.hypridle;
-      deps = {
-        inherit (pkgs) swaylock brightnessctl procps;
-        mango = self'.packages.mango;
+      flags = {
+        "-c" = ./config/hypridle.conf;
       };
     };
   };

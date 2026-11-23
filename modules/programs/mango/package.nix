@@ -5,30 +5,30 @@
     inputs',
     ...
   }: let
+    defaultDeps = {
+      inherit
+        (pkgs)
+        wbg
+        wlsunset
+        wl-clipboard
+        grim
+        slurp
+        wireplumber
+        brightnessctl
+        playerctl
+        ;
+    };
+
     wrapPackage = {
       pkgs,
       package,
       env,
-      deps,
+      deps ? {},
+      flags,
     }:
       inputs.wrappers.lib.wrapPackage {
-        inherit pkgs package env;
-
-        flags = {
-          "-c" = "${./config}/config.conf";
-        };
-
-        runtimePkgs = [
-          deps.wbg
-          deps.wlsunset
-
-          deps.wl-clipboard
-          deps.grim
-          deps.slurp
-          deps.wireplumber
-          deps.brightnessctl
-          deps.playerctl
-        ];
+        inherit pkgs package env flags;
+        runtimePkgs = builtins.attrValues (defaultDeps // deps);
       };
   in {
     packages.mango = lib.makeOverridable wrapPackage {
@@ -42,18 +42,8 @@
         LAUNCHER = "${pkgs.fuzzel}/bin/fuzzel";
       };
 
-      deps = {
-        inherit
-          (pkgs)
-          wbg
-          wlsunset
-          wl-clipboard
-          grim
-          slurp
-          wireplumber
-          brightnessctl
-          playerctl
-          ;
+      flags = {
+        "-c" = "${./config}/config.conf";
       };
     };
   };

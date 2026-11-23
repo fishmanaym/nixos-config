@@ -52,6 +52,7 @@
       unzip
       devenv
       jetbrains.idea
+      antigravity-hub
 
       jdk25
       maven
